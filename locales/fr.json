@@ -8,6 +8,10 @@
  * ------------------------------------------------------------
  */
 {
+  "products-downloads": {
+    "login_button": "Connexion",
+    "login_description": "Merci de vous connecter pour télécharger nos informations produits en PDF."
+  },
   "general": {
     "password_page": {
       "login_form_heading": "Accéder à la boutique à l'aide d'un mot de passe :",

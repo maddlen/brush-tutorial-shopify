@@ -1,0 +1,10 @@
+<div class="section page-width-content color-scheme-1">
+  <div x-data="ProductsDownloads()">
+    {% if customer %}
+      LOGGED IN
+    {% else %}
+      <p>{{ 'products-downloads.login_description' | t }}</p>
+      <a :href="login" type="button" class="button">{{ 'products-downloads.login_button' | t }}</a>
+    {% endif %}
+  </div>
+</div>

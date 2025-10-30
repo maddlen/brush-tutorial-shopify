@@ -1,3 +1,5 @@
+import ProductsDownloads from "./products-downloads";
+
 export function registerAlpineComponents() {
-  // Add components here
+  ProductsDownloads();
 }

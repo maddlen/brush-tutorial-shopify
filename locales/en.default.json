@@ -8,6 +8,10 @@
  * ------------------------------------------------------------
  */
 {
+  "products-downloads": {
+    "login_button": "Login",
+    "login_description": "Please login to download our PDF products datasheets."
+  },
   "general": {
     "password_page": {
       "login_form_heading": "Enter store using password:",
