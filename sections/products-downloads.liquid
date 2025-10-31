@@ -1,10 +1,84 @@
 <div class="section page-width-content color-scheme-1">
   <div x-data="ProductsDownloads()">
     {% if customer %}
-      LOGGED IN
+      <section id="products-downloads-{{ section.id }}">
+        {% if section.blocks.size > 0 %}
+          <ul class="pdl__grid">
+            {% for block in section.blocks %}
+              {% assign product = block.settings.product %}
+              <li class="pdl__item">
+                {{ product | image_url: width: 500 | image_tag }}
+                {{ product.title }}
+                <button type="button" class="button">{{ 'products-downloads.download_button_label' | t }}</button>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>{{ 'products-downloads.no_products_found' | t }}</p>
+        {% endif %}
+      </section>
     {% else %}
       <p>{{ 'products-downloads.login_description' | t }}</p>
       <a :href="login" type="button" class="button">{{ 'products-downloads.login_button' | t }}</a>
     {% endif %}
   </div>
 </div>
+
+{% stylesheet %}
+  .pdl__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    padding: 0 40px;
+  }
+
+  .pdl__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: 0;
+  }
+
+  .pdl__item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .pdl__item button {
+    margin: 10px auto;
+  }
+
+  @media (min-width: 750px) {
+    .pdl__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product List",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "Product List",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}

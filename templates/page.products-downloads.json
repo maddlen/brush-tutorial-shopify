@@ -17,7 +17,35 @@
       }
     },
     "products-downloads": {
-      "type": "products-downloads"
+      "type": "products-downloads",
+      "blocks": {
+        "product_gq9GUE": {
+          "type": "product",
+          "settings": {
+            "product": "the-3p-fulfilled-snowboard"
+          }
+        },
+        "product_RjTcMn": {
+          "type": "product",
+          "settings": {
+            "product": "the-collection-snowboard-oxygen"
+          }
+        },
+        "product_g93RbJ": {
+          "type": "product",
+          "settings": {
+            "product": "the-complete-snowboard"
+          }
+        },
+        "product_wcmPTU": {
+          "type": "product",
+          "settings": {
+            "product": "the-collection-snowboard-liquid"
+          }
+        }
+      },
+      "block_order": ["product_gq9GUE", "product_RjTcMn", "product_g93RbJ", "product_wcmPTU"],
+      "settings": {}
     }
   },
   "order": ["main", "products-downloads"]

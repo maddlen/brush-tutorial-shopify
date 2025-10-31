@@ -9,8 +9,10 @@
  */
 {
   "products-downloads": {
+    "download_button_label": "Télécharger",
     "login_button": "Connexion",
-    "login_description": "Merci de vous connecter pour télécharger nos informations produits en PDF."
+    "login_description": "Merci de vous connecter pour télécharger nos informations produits en PDF.",
+    "no_products_found": "Aucun produit disponible en téléchargement.",
   },
   "general": {
     "password_page": {

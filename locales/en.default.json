@@ -9,8 +9,10 @@
  */
 {
   "products-downloads": {
+    "download_button_label": "Download",
     "login_button": "Login",
-    "login_description": "Please login to download our PDF products datasheets."
+    "login_description": "Please login to download our PDF products datasheets.",
+    "no_products_found": "No product available for download.",
   },
   "general": {
     "password_page": {
