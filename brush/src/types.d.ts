@@ -5,4 +5,11 @@ declare global {
   }
 }
 
+export type TaxesStore = {
+  rates: {
+    country: string;
+    rate: number;
+  }[];
+};
+
 export {};
