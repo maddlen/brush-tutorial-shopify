@@ -1,0 +1,132 @@
+:root {
+  --wishlist-heart-color: #e63946;
+}
+
+.wishlist__toggler {
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+}
+
+.wishlist__toggler .heart-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  fill: none;
+  stroke: #888;
+  stroke-width: 2;
+
+  transition: all 0.25s ease;
+}
+
+.wishlist__toggler:hover .heart-icon {
+  stroke: var(--wishlist-heart-color);
+  transform: scale(1.1);
+}
+
+.wishlist__toggler.is-active .heart-icon {
+  fill: var(--wishlist-heart-color);
+  stroke: var(--wishlist-heart-color);
+}
+
+.wishlist__toggler.is-active .heart-icon {
+  animation: wishlist-pop 0.3s ease;
+}
+
+@keyframes wishlist-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.wishlist__login-notice {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--wishlist-heart-color);
+  border-radius: 1rem;
+  .heart {
+    width: 30px;
+    display: flex;
+    align-items: center;
+  }
+  .heart-icon {
+    fill: var(--wishlist-heart-color);
+    stroke: var(--wishlist-heart-color);
+  }
+  .button {
+    margin-left: auto;
+  }
+}
+
+.wishlist__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  min-height: 100dvh;
+}
+
+.wishlist__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  a {
+    text-decoration: none;
+  }
+  .image-wrapper {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.wishlist__item.skeleton {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(#eee 75%, transparent 0) 0 0 / 100% 60% no-repeat,
+    linear-gradient(#eee 16px, transparent 0) 5% 65% / 90% 10% no-repeat,
+    linear-gradient(#eee 14px, transparent 0) 5% 78% / 50% 8% no-repeat,
+    transparent;
+}
+
+.wishlist__item.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .wishlist__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -52,6 +52,9 @@
   aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
   data-desktop-layout="{{ section.settings.gallery_layout }}"
 >
+  <div x-data="WishlistToggler('{{ product.handle }}' )">
+    {%- render 'wishlist-toggler-button' -%}
+  </div>
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
   <slider-component id="GalleryViewer-{{ section.id }}{{ id_append }}" class="slider-mobile-gutter">
     {%- unless is_duplicate -%}
@@ -103,19 +106,19 @@
               endif
             -%}
             {% render 'product-thumbnail',
-                media: media,
-                media_count: media_count,
-                position: media_position,
-                desktop_layout: section.settings.gallery_layout,
-                mobile_layout: section.settings.mobile_thumbnails,
-                loop: section.settings.enable_video_looping,
-                modal_id: section.id,
-                xr_button: true,
-                media_width: media_width,
-                media_fit: section.settings.media_fit,
-                constrain_to_viewport: section.settings.constrain_to_viewport,
-                lazy_load: lazy_load
-              %}
+              media: media,
+              media_count: media_count,
+              position: media_position,
+              desktop_layout: section.settings.gallery_layout,
+              mobile_layout: section.settings.mobile_thumbnails,
+              loop: section.settings.enable_video_looping,
+              modal_id: section.id,
+              xr_button: true,
+              media_width: media_width,
+              media_fit: section.settings.media_fit,
+              constrain_to_viewport: section.settings.constrain_to_viewport,
+              lazy_load: lazy_load
+            %}
           </li>
         {%- endunless -%}
       {%- endfor -%}
@@ -219,12 +222,16 @@
               aria-controls="GalleryViewer-{{ section.id }}{{ id_append }}"
               aria-describedby="{{ thumbnail_id }}"
             >
-              {{ featured_media.preview_image | image_url: width: 416 | image_tag:
-                loading: 'lazy',
-                sizes: sizes,
-                widths: '54, 74, 104, 162, 208, 324, 416',
-                id: thumbnail_id,
-                alt: featured_media.alt | escape
+              {{
+                featured_media.preview_image
+                | image_url: width: 416
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: sizes,
+                  widths: '54, 74, 104, 162, 208, 324, 416',
+                  id: thumbnail_id,
+                  alt: featured_media.alt
+                | escape
               }}
             </button>
           </li>
@@ -273,12 +280,16 @@
                 aria-controls="GalleryViewer-{{ section.id }}{{ id_append }}"
                 aria-describedby="{{ thumbnail_id }}"
               >
-                {{ media.preview_image | image_url: width: 416 | image_tag:
-                  loading: 'lazy',
-                  sizes: sizes,
-                  widths: '54, 74, 104, 162, 208, 324, 416',
-                  id: thumbnail_id,
-                  alt: media.alt | escape
+                {{
+                  media.preview_image
+                  | image_url: width: 416
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: sizes,
+                    widths: '54, 74, 104, 162, 208, 324, 416',
+                    id: thumbnail_id,
+                    alt: media.alt
+                  | escape
                 }}
               </button>
             </li>

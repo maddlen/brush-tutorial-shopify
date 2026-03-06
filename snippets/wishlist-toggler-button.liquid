@@ -1,0 +1,10 @@
+<button
+  x-cloak
+  @click="isInWishlist() ? removeFromWishlist() : addToWishlist()"
+  class="wishlist__toggler"
+  :class="isInWishlist() ? 'is-active': ''"
+  aria-pressed="false"
+  aria-label="Toggle from wishlist"
+>
+  {% render 'icon-heart' %}
+</button>

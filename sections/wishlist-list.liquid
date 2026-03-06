@@ -1,0 +1,67 @@
+<div x-data="WishlistList()" class="page-width">
+  <h1>{{ section.settings.title }}</h1>
+
+  {% unless customer %}
+    <div class="wishlist__login-notice" x-cloak>
+      <div class="heart">{% render 'icon-heart' %}</div>
+      <div>{{ section.settings.login_text }}</div>
+      <a class="button" :href="Brush.Referrals.makeLoginRedirectUrl()">{{ section.settings.login_button_text }}</a>
+    </div>
+  {% endunless %}
+
+  <div class="wishlist__list">
+    <!-- Placeholder items -->
+    {% for i in (1..4) -%}
+      <div x-show="products.length === 0 && loading" class="wishlist__item skeleton">&nbsp;</div>
+    {%- endfor %}
+
+    <div x-show="products.length === 0 && !loading" x-cloak>
+      <h3>{{ section.settings.empty_text }}</h3>
+    </div>
+
+    <template x-for="product in products" :key="product.id">
+      <div class="wishlist__item">
+        <div x-data="WishlistToggler(product.handle)">
+          {%- render 'wishlist-toggler-button' -%}
+        </div>
+        <a :href="product.url">
+          <div class="image-wrapper">
+            <img :src="product.featured_image" :alt="product.title" width="1600" height="1600">
+          </div>
+          <h3 x-text="product.title"></h3>
+        </a>
+      </div>
+    </template>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Wishlist List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "My Wishlist"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "Empty wishlist notice",
+      "default": "Your wishlist is empty."
+    },
+    {
+      "type": "text",
+      "id": "login_text",
+      "label": "Login notice",
+      "default": "Log in to access your saved wishlist and keep track of your favorites."
+    },
+    {
+      "type": "text",
+      "id": "login_button_text",
+      "label": "Login button text",
+      "default": "Log in"
+    }
+  ]
+}
+{% endschema %}
