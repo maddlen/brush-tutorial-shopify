@@ -18,6 +18,5 @@ export default defineConfig({
     outDir: "../assets",
     emptyOutDir: false,
     minify: true,
-    sourcemap: "inline",
   },
 });
