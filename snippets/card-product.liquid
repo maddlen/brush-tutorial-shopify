@@ -33,6 +33,9 @@
     endif
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div x-data="WishlistToggler('{{ card_product.handle }}')">
+      {%- render 'wishlist-toggler-button' -%}
+    </div>
     <div
       class="
         card
