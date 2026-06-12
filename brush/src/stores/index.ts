@@ -9,5 +9,7 @@ export function registerAlpineStores() {
       productHandles: [],
       customerId: 0,
     } as WishlistStore),
+    taxesStore: Brush.Persistor.initStore("taxesStore", { rates: [] }),
+    // Add stores here
   };
 }
